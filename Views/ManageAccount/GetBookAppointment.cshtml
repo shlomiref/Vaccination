@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AppForVaccine.Models.AppointmentViewModel>
+
+@{
+    ViewBag.Title = "GetBookAppointment";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info">Get Booked Appointments</h2>
+        <hr />
+        <div class="d-flex justify-content-end mb-2">
+            <a href="@Url.Action("BookAppointment", "Appointment")" class="btn btn btn-outline-primary"><i class="fa-regular fa-square-plus fs-1"></i></a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(p => p.Date)</th>
+                        <th>@Html.DisplayNameFor(p => p.Time)</th>
+                        <th>@Html.DisplayNameFor(p => p.Detail)</th>
+                        <th>@Html.DisplayNameFor(p => p.Therapist)</th>
+                        <th>@Html.DisplayNameFor(p => p.Patient)</th>
+                        <th>@Html.DisplayNameFor(p => p.Status)</th>
+                        @*<th>Action</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                    <tr>
+                        <td>@Html.DisplayFor(p => pdt.Date)</td>
+                        <td>@Html.DisplayFor(p => pdt.Time)</td>
+                        <td>@Html.DisplayFor(p => pdt.Detail)</td>
+                        <td>@Html.DisplayFor(p => pdt.Therapist)</td>
+                        <td>@Html.DisplayFor(p => pdt.Patient)</td>
+                        <td>@Html.DisplayFor(p => pdt.Status)</td>
+                        @*<td>
+                            <a href="@Url.Action("Edit", "ManageAccount", new {id  })" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
+
+                        </td>*@
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

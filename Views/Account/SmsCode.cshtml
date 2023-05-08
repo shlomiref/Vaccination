@@ -1,0 +1,48 @@
+﻿@model AppForVaccine.Models.SmsCodeiewModel
+
+@{
+    ViewBag.Title = "SmsCode";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<br />
+<br />
+<br />
+
+<br />
+<div class="card shadow mb-2 p-5">
+    <h2 class="text-center text-uppercase"> הזן את <br />קוד האימות<span class="text-danger"></span></h2>
+    <br/>
+    <span style="color:red"> @Html.ValidationMessage("CustomError")</span>
+    <hr>
+
+    @using (Html.BeginForm("SmsCode", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row g-3 align-items-center ">
+            <div class="col-auto text-center">
+            </div>
+            <div class=" text-right">
+                @Html.TextBoxFor(m => m.Code, new { @class = "form-control", placeholder = "קוד אימות"   })
+                @Html.ValidationMessageFor(m => m.Code, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <br /><br />
+
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+            </div>
+            <div class="col-md-offset-2 col-md-10 ">
+                &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <button type="submit" value="Create" class="btn btn-primary"> אישור</button>
+
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

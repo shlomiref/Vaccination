@@ -1,0 +1,106 @@
+﻿@model AppForVaccine.Models.MyUserModel
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="card shadow mb-2 p-5">
+
+    <h2 class="text-info">Add New User</h2>
+    <hr />
+
+    <div class="row mb-2">
+        <div id="msg">
+
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="page-content" style="min-height:1603px">
+            <div class="page-bar">
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+
+                        <div class="card-body" id="bar-parent">
+
+                            <form action="Profile" method="Post" id="form_sample_1" class="form-horizontal" autocomplete="off" novalidate="novalidate">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                                <div class="form-body">
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            FullName
+                                            <span class="required" aria-required="true"> * </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-height", placeholder = "enter Name" })
+                                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            Manufacturer
+                                            <span class="required" aria-required="true"> * </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.EditorFor(model => model.Status, new { @class = "form-control input-height", placeholder = "check status" })
+                                            @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            PhoneNumber
+                                            <span class="required" aria-required="true"> * </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control input-height", placeholder = "statue PhoneNumber" })
+
+                                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="offset-md-3 col-md-3">
+                                                <button type="submit" class="btn btn-info" id="submitData">Submit</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@section scripts{
+    <script src="~/Content/JS/jquery-3.6.0.js"></script>
+    <script src="~/Content/JS/jquery.validate.js"></script>
+    <script src="~/Content/JS/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Content/JS/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $("#form0").attr("enctype", "multipart/form-data")
+
+        function clearAll() {
+            $("#form0").trigger("reset");
+        }
+    </script>
+
+}

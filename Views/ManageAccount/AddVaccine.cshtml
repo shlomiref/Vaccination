@@ -1,0 +1,117 @@
+﻿@model AppForVaccine.Models.Vaccination
+
+@{
+    ViewBag.Title = "AddVaccine";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="card shadow mb-2 p-5">
+
+    <h2 class="text-info">הוספת חיסון </h2>
+    <hr />
+
+    <div class="row mb-2">
+        <div id="msg">
+
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="page-content" style="min-height:1603px">
+            <div class="page-bar">
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+
+                        <div class="card-body" id="bar-parent">
+
+                            <form action="AddVaccine" method="Post" id="form_sample_1" class="form-horizontal" autocomplete="off" novalidate="novalidate">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                                <div class="form-body">
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            שם החיסון
+                                            <span class="required" aria-required="true">  </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(m => m.VaccineName, new { @class = "form-control input-height", placeholder = "שם החיסון" })
+                                            @Html.ValidationMessageFor(m => m.VaccineName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            יצרן
+                                            <span class="required" aria-required="true">  </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(m => m.Manufacturer, new { @class = "form-control input-height", placeholder = "יצרן" })
+                                            @Html.ValidationMessageFor(m => m.Manufacturer, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            מחזוריות
+                                            <span class="required" aria-required="true">  </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(model => model.Month, new { @class = "form-control input-height", placeholder = "מחזוריות" })
+
+                                            @Html.ValidationMessageFor(m => m.Month, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            תוקף
+                                            <span class="required" aria-required="true">  </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(model => model.ValidityOfVaccine, new { @class = "form-control input-height", placeholder = "תוקף " })
+
+                                            @Html.ValidationMessageFor(m => m.ValidityOfVaccine, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="offset-md-3 col-md-3">
+                                                <button type="submit" class="btn btn-info" id="submitData">שמור</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@section scripts{
+    <script src="~/Content/JS/jquery-3.6.0.js"></script>
+    <script src="~/Content/JS/jquery.validate.js"></script>
+    <script src="~/Content/JS/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Content/JS/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $("#form0").attr("enctype", "multipart/form-data")
+
+        function clearAll() {
+            $("#form0").trigger("reset");
+        }
+    </script>
+
+}

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AppForVaccine.Models.Therapist>
+
+@{
+    ViewBag.Title = "Get Therapist";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info">רשימת מטפלים</h2>
+        <hr />        
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>כתובת מייל</th>
+                        <th>פלאפון</th>
+                        <th>מרפאה</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(p => pdt.Name)</td>
+                            <td>@Html.DisplayFor(p => pdt.Email)</td>
+                            <td>@Html.DisplayFor(p => pdt.Phone)</td>
+                            <td>@Html.DisplayFor(p => pdt.Clinic)</td>
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

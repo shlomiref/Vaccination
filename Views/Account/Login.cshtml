@@ -1,0 +1,74 @@
+﻿@using AppForVaccine.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<br />
+<br />
+<br />
+<br />
+
+<div class="card shadow mb-2 p-5">
+
+    <img src="~/Image/login.png" />
+
+
+
+    <span style="color:red"> @Html.ValidationMessage("CustomError")</span>
+    <hr>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="g-3 align-items-center ">
+                    <div class="col-auto text-right">
+                        <label for="inputPassword6" class="col-form-label ">:שם משתמש</label>
+                    </div>
+                    <div class="col-auto text-center">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "הכנס את כתובת המייל" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        @*<input type="text" name="Username" class="form-control" aria-describedby="passwordHelpInline">*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+
+
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="g-3 align-items-center ">
+                    <div class="col-auto text-right">
+                        <label for="inputPassword6" class="col-form-label">:סיסמא </label>
+                    </div>
+                    <div class="col-auto text-center">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "הכנס את הסיסמא" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        @*<input type="text" name="Username" class="form-control" aria-describedby="passwordHelpInline">*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /> <br />
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="row g-3 align-items-center ">
+                    <div class="col-auto text-center">
+                        <button type="submit" value="Create" class="btn btn-primary"> התחבר</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "IndexOfTherapist";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="m-4">
+
+    <div class="row row-cols-1 row-cols-md-1 g-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Patient</h5>
+                    <a href="GetPatient" class="btn btn-primary">Manage Patient</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">vaccination Record</h5>
+
+                    <a href="GetVaccination" class="btn btn-primary">Manage Vaccination</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  
+
+</div>
+
+@if (ViewBag.message != null)
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.success('Added')
+        })
+        console.log(ViewBag.message);
+    </script>
+
+}
+

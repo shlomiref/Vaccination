@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AppForVaccine.Models.Vaccination>
+
+@{
+    ViewBag.Title = "GetVaccine";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info"> רשימת חיסונים</h2>
+        <hr />
+        <div class="d-flex justify-content-end mb-2">
+            <a href="@Url.Action("AddVaccine", "ManageAccount")" class="btn btn btn-outline-primary"><i class="fa-regular fa-square-plus fs-1"></i></a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>שם</th>
+                        <th>יצרן</th>
+                        <th>תוקף</th>
+                        <th>שינוי</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(p => pdt.VaccineName)</td>
+                            <td>@Html.DisplayFor(p => pdt.Manufacturer)</td>
+                            <td>@Html.DisplayFor(p => pdt.Month)</td>
+                            <td>
+                                <a href="@Url.Action("EVaccination", "ManageAccount", new {id = pdt.vaccineId })" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

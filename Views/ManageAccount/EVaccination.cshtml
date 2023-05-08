@@ -1,0 +1,119 @@
+﻿@model AppForVaccine.Models.VaccinationModel
+
+@{
+    ViewBag.Title = "EVaccination";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<div class="card shadow mb-2 p-5">
+
+    <h2 class="text-info">Edit Vaccine</h2>
+    <hr />
+
+    <div class="row mb-2">
+        <div id="msg">
+
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="page-content" style="min-height:1603px">
+            <div class="page-bar">
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card card-box">
+
+                        <div class="card-body" id="bar-parent">
+
+                            <form action="EVaccination" method="Post" id="form_sample_1" class="form-horizontal" autocomplete="off" novalidate="novalidate">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(x => x.vaccineId)
+                                <div class="form-body">
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            VaccineName
+                                            <span class="required" aria-required="true"> * </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(m => m.VaccineName, new { @class = "form-control input-height", placeholder = "enter VaccineName" })
+                                            @Html.ValidationMessageFor(m => m.VaccineName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            Manufacturer
+                                            <span class="required" aria-required="true"> * </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(m => m.Manufacturer, new { @class = "form-control input-height", placeholder = "enter Manufacturer" })
+                                            @Html.ValidationMessageFor(m => m.Manufacturer, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            ValidityOfVaccine
+                                            <span class="required" aria-required="true"> * </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(model => model.ValidityOfVaccine, new { @class = "form-control input-height", placeholder = "statue ValidityOfVaccine" })
+
+                                            @Html.ValidationMessageFor(m => m.ValidityOfVaccine, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-1">
+                                            Month
+                                            <span class="required" aria-required="true"> * </span>
+                                        </label>
+                                        <div class="col-md-5">
+                                            @Html.TextBoxFor(model => model.Month, new { @class = "form-control input-height", placeholder = "Month " })
+
+                                            @Html.ValidationMessageFor(m => m.Month, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="offset-md-3 col-md-3">
+                                                <button type="submit" class="btn btn-info" id="submitData">Submit</button>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@section scripts{
+    <script src="~/Content/JS/jquery-3.6.0.js"></script>
+    <script src="~/Content/JS/jquery.validate.js"></script>
+    <script src="~/Content/JS/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Content/JS/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $("#form0").attr("enctype", "multipart/form-data")
+
+        function clearAll() {
+            $("#form0").trigger("reset");
+        }
+    </script>
+
+}

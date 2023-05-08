@@ -1,0 +1,196 @@
+﻿Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+
+@shlomiref
+ejimeoghenefejiro
+/
+AppForVaccine
+Private
+Fork your own copy of ejimeoghenefejiro/AppForVaccine
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Beta Try the new code view
+AppForVaccine/Views/Shared/_Layout1.cshtml
+@ejimeoghenefejiro
+ejimeoghenefejiro Report completed
+Latest commit 7be74b7 last month
+ History
+ 1 contributor
+165 lines (143 sloc)  8.23 KB
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="AdminKit">
+    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <title>@ViewBag.Title - Vaccine App</title>
+    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="~/Fontawesome/css/all.css" rel="stylesheet" />
+    <link href="~/Content/CSS/app.css" rel="stylesheet" />
+    @RenderSection("Head", false)
+</head>
+
+<body>
+    <div class="wrapper">
+        @*Sidebar Navegation Start Here*@
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand" href="@Url.Action("Index", "ManageAccount")">
+                    <span class="align-middle">Vaccination App</span>
+                </a>
+
+                <ul class="sidebar-nav">
+
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link fs-4" href="@Url.Action("Index", "ManageAccount")">
+                            <i class="fa-solid fa-gauge"></i><span class="align-middle">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("UserList", "ManageAccount")">
+                            <i class="fa-regular fa-users"></i><span class="align-middle">Manager User</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("GetTherapist", "ManageAccount")">
+                            <i class="fa-solid fa-table"></i><span class="align-middle">Therapist</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("VaccineReminder", "ManageAccount")">
+                            <i class="fa-regular fa-truck-field"></i><span class="align-middle">Reminder</span>
+                        </a>
+                    </li>
+
+                    @*<li class="sidebar-item">
+                            <a class="sidebar-link fs-4" href="@Url.Action("GetVaccinationRecord", "ManageAccount")">
+                                <i class="fa-light fa-person"></i><span class="align-middle">Vaccine Patient</span>
+                            </a>
+                        </li>*@
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("GetVaccine", "ManageAccount")">
+                            <i class="fa-solid fa-person-chalkboard"></i><span class="align-middle">Vaccine List</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("GetCity", "ManageAccount")">
+                            <i class="fa-solid fa-city"></i><span class="align-middle">Citiest List</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                            <i class="align-middle" data-feather="settings"></i>
+                        </a>
+
+                        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                            &nbsp;&nbsp;&nbsp;<i class="fa-solid fa-file-chart-column fs-4" style="color: rgba(233,236,239,.5);"></i>&nbsp;&nbsp;&nbsp;<span class="fs-4" style="color: rgba(233,236,239,.5);">View Reports</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item fs-4" href="@Url.Action("Report", "ManageAccount")"><i class="fa-solid fa-arrow-trend-up"></i> Report View</a>
+                            <a class="dropdown-item fs-4" href="@Url.Action("ReportDownload", "ManageAccount")"><i class="fa-solid fa-chart-user"></i> Export to  Report</a>
+                            <div class="dropdown-divider"></div>
+
+                        </div>
+
+
+
+                    <li class="sidebar-header border-top mt-2 fs-4 text-muted">
+                    </li>
+
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("ChangePasswordAdmin", "ManageAccount")">
+                            <i class="fa-regular fa-cart-shopping-fast"></i><span class="align-middle">ChangePassword</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav navbar-align">
+                        @*Top Navegation Start Here*@
+                        <li class="nav-item dropdown">
+                            <a class=" d-inline-block d-sm-none nav-link fs-4" href="#">
+                                <i class="fa-duotone fa-hands-clapping"></i>&nbsp;<span>Hello!&nbsp;@Session["username"]</span>
+                            </a>
+
+                            <a class="nav-link d-none d-sm-inline-block fs-4" href="#" data-bs-toggle="dropdown">
+                                <i class="fa-duotone fa-hands-clapping"></i>&nbsp;<span>Hello!&nbsp;@Session["username"]</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link d-none d-sm-inline-block fs-4" href="/ManageAccount/AdminProfile/@Session["id"]">
+                                <i class="fa-solid fa-user"></i>&nbsp;<span>Profile</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-none d-sm-inline-block fs-4" href="@Url.Action("LogOff", "Account")">
+                                <i class="fa-regular fa-right-from-bracket"></i>&nbsp;<span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            @*Content Area Srart Here*@
+            <main class="content">
+                <div class="container-fluid p-0">
+                    @RenderBody()
+                </div>
+            </main>
+            @*Footer Section Start*@
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a class="text-muted nav-link" href="@Url.Action("Index", "ManageAccount")">&copy; @DateTime.Now.Year<strong>&nbsp;Vaccine App</strong></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    @RenderSection("scripts", false)
+    <script src="~/Content/JS/bootstrap.js"></script>
+    <script src="~/Content/JS/app.js"></script>
+</body>
+</html>

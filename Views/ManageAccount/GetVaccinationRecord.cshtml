@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AppForVaccine.Models.PatientVaccination>
+
+@{
+    ViewBag.Title = "GetVaccinationRecord";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info"> Vaccination List</h2>
+        <hr />
+       
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(p => p.VaccineName)</th>
+                        <th>@Html.DisplayNameFor(p => p.FirstName)</th>
+                        <th>@Html.DisplayNameFor(p => p.LastName)</th>
+                        <th>@Html.DisplayNameFor(p => p.PatientId)</th>
+                        <th>@Html.DisplayNameFor(p => p.Status)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                    <tr>
+                        <td>@Html.DisplayFor(p => pdt.VaccineName)</td>
+                        <td>@Html.DisplayFor(p => pdt.FirstName)</td>
+                        <td>@Html.DisplayFor(p => pdt.LastName)</td>
+                        <td>@Html.DisplayFor(p => pdt.PatientId)</td>
+                        <td>@Html.DisplayFor(p => pdt.Status)</td>
+                        @*<td>
+            <a href="@Url.Action("Edit", "ManageAccount", new {id = pdt.id })" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
+
+        </td>*@
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

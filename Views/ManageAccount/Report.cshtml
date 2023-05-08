@@ -1,0 +1,166 @@
+﻿@model IEnumerable<AppForVaccine.Models.ReportModel>
+
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info">צפייה בדוחות</h2>
+        <hr />
+        <div class="container">
+            <form action="Report">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="select1">חיסון:</label>
+                            @Html.DropDownList("VaccineName", ViewBag.Vaccinations as SelectList, new { @class = "form-control fs-4", @id="VaccineName" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="select2">גיל:</label>
+                            @Html.DropDownList("Age", ViewBag.Age as SelectList, new { @class = "form-control",@id ="Age" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="select3">עיר:</label>
+                            @Html.DropDownList("City", ViewBag.City as SelectList, new { @class = "form-control", @id ="City" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="select4">חוסן/לא חוסן:</label>
+                            @Html.DropDownList("Status", ViewBag.Status as SelectList, new { @class = "form-control", @id ="Status" })
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <br />
+
+                            <button type="submit" class="btn btn-primary"> חפש</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        @*<div class="row">
+                        <div class="btn-group" role="group" style="font-size:1.3em; padding-left:6%">
+                            <span id="SPAN1"><select type="text" name="patientid" id="textsend" onkeyup="success()" class="btn btn-secondary" style="background-color: whitesmoke; color: black; width: auto; height: 2em; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center;" placeholder="Enter patient Id">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+            </select></span>
+                            <span id="SPAN1"><input type="number" name="patientid" id="textsend" onkeyup="success()" class="btn btn-secondary" style="background-color: whitesmoke; color: black; width: auto; height: 2em; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center;" placeholder="Enter patient Id" /></span>
+                            <span id="SPAN1"><input type="text" name="patientid" id="textsend" onkeyup="success()" class="btn btn-secondary" style="background-color: whitesmoke; color: black; width: auto; height: 2em; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center;" placeholder="Enter patient Id" /></span>
+                            <span id="SPAN1"><input type="time" name="patientid" id="textsend" onkeyup="success()" class="btn btn-secondary" style="background-color: whitesmoke; color: black; width: auto; height: 2em; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center;" placeholder="Enter patient Id" /></span>
+                            <button type="submit" id="button" disabled class="btn btn-secondary" style="background-color: steelblue; color: white; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">Search</button>
+                        </div>
+                    </div>*@
+        @*<div class="d-flex justify-content-end mb-2">
+            <a href="@Url.Action("Register", "ManageAccount")" class="btn btn btn-outline-primary"><i class="fa-regular fa-square-plus fs-1"></i></a>
+        </div>*@
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>ת.ז</th>
+                        <th>שם מלא </th>
+                        <th>שם החיסון</th>
+                        @*<th>@Html.DisplayNameFor(p => p.LastName)</th>*@
+                        <th>גיל</th>
+                        <th>עיר</th>
+                        <th>חוסן/לא חוסן</th>
+
+                        @*<th>Action</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(p => pdt.PatientNumber)</td>
+                            <td>@Html.DisplayFor(p => pdt.FirstName)&nbsp;&nbsp; @Html.DisplayFor(p => pdt.LastName)</td>
+                            <td>@Html.DisplayFor(p => pdt.VaccineName)</td>
+                            @*<td></td>*@
+                            <td>@Html.DisplayFor(p => pdt.Age)</td>
+                            <td>
+                                @if (pdt.City == null)
+                                {
+                                    <button type="button" disabled class="btn btn-secondary" style="background-color: gray; font-weight: bold; color: darkred; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">Not Record Yet</button>
+
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(p => pdt.City)
+                                }
+
+                            </td>
+                            <td>
+                                @if (pdt.Status == false)
+                                {
+                                    <button type="button" disabled class="btn btn-secondary" style="background-color: gray; font-weight: bold; color: darkred; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">לא חוסן</button>
+
+                                }
+                                else if (pdt.Status == true)
+                                {
+                                    <button type="button" disabled class="btn btn-secondary" style="background-color: green; font-weight: bold; color: darkred; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">חוסן</button>
+                                }
+                            </td>
+
+                            @*<td>
+                                    <a href="@Url.Action("Edit", "ManageAccount", new {id = pdt.PatientVaccinatedId })" class="btn btn-outline-warning btn-sm" Value="@pdt.PatientVaccinatedId" id="btnPost"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
+
+                                </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btnPost").click(function () {
+            var Download = new Object();
+            Download.VaccineName = $('#VaccineNameId').val();
+            Download.Age = $('#AgeId').val();
+            Download.City = $('#CityId').val();
+            Download.Status = $('#StatusId').val();
+            if (Download != null) {
+                $.ajax({
+                    type: "POST",
+                    url: "/ManageAccount/DownloadReport",
+                    data: JSON.stringify(Download),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                });
+            }
+        });
+
+        $("#btnsubmit").click(function (e) {
+            //Serialize the form datas.
+            var valdata = $("#friendform").serialize();
+            //to get alert popup
+            alert(valdata);
+            $.ajax({
+                url: "/Friend/AddFriend",
+                type: "POST",
+                dataType: 'json',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+               
+            });
+        });
+    });
+</script>
+
+
