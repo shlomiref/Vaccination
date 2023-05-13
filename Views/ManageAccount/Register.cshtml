@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="page-content-wrapper">
-            <div class="page-content" style="min-height:1603px">
+            <div class="page-content" style="min-height:200px">
                 <div class="page-bar">
 
                 </div>
@@ -34,6 +34,17 @@
                                     <div class="form-body">
                                         <div class="form-group row">
                                             <label class="control-label col-md-1">
+                                                ת.ז
+                                                <span class="required" aria-required="true"> </span>
+                                            </label>
+                                            <div class="col-md-5">
+                                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-height", placeholder = " תעודת זהות" })
+                                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="form-group row">
+                                            <label class="control-label col-md-1">
                                                 שם מלא
                                                 <span class="required" aria-required="true"> </span>
                                             </label>
@@ -43,14 +54,14 @@
                                             </div>
                                         </div>
                                         <br />
-                                       
+
                                         <div class="form-group row">
                                             <label class="control-label col-md-1">
                                                 Email
                                                 <span class="required" aria-required="true"> </span>
                                             </label>
                                             <div class="col-md-5">
-                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-height", placeholder = " email" })
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-height", placeholder = " Email" })
                                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -61,7 +72,7 @@
                                                 <span class="required" aria-required="true">  </span>
                                             </label>
                                             <div class="col-md-5">
-                                                @Html.EnumDropDownListFor(m => m.UserTypes, new { @class = "form-control input-height", placeholder = "pick user type" })
+                                                @Html.EnumDropDownListFor(m => m.UserTypes, new { @class = "form-control input-height", placeholder = "תפקיד" })
                                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -91,7 +102,7 @@
                                         <div class="form-group row">
                                             <label class="control-label col-md-1">
                                                 אימות סיסמא
-                                                <span class="required" aria-required="true">  </span>
+                                                <span class="required" aria-required="true"> </span>
                                             </label>
                                             <div class="col-md-5">
                                                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control input-height", placeholder = "אימות סיסמא" })

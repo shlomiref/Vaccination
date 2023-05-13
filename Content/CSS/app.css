@@ -60,7 +60,7 @@
 }
 
 *, :after, :before {
-    box-sizing: border-box
+    box-sizing: content-box
 }
 
 @media(prefers-reduced-motion:no-preference) {
@@ -2131,7 +2131,6 @@ progress {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     width: 100%;
     text-align:right;
-    background-color:red;
 }
 
 @media(prefers-reduced-motion:reduce) {
