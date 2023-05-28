@@ -40,7 +40,7 @@ namespace AppForVaccine.Models
         public DbSet<PatientVaccination> PatientVaccinations { get; set; }
         public DbSet<Clinic> Clinics { get; set; }
         public DbSet<CityList> CityLists { get; set; }
-        
+       
 
         public static ApplicationDbContext Create()
         {

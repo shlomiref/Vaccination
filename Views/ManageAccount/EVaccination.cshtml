@@ -6,9 +6,11 @@
 }
 
 
-<div class="card shadow mb-2 p-5">
+<div class="card shadow mb-2 p-5" style=" margin: 0px 50px 0px 350px;
+    max-width: 750px;
+    max-height: 750px;">
 
-    <h2 class="text-info">Edit Vaccine</h2>
+    <h2 class="text-info">ערוך נתוני חיסון</h2>
     <hr />
 
     <div class="row mb-2">
@@ -17,7 +19,7 @@
         </div>
     </div>
     <div class="page-content-wrapper">
-        <div class="page-content" style="min-height:1603px">
+        <div class="page-content" >
             <div class="page-bar">
 
             </div>
@@ -33,9 +35,9 @@
                                 @Html.HiddenFor(x => x.vaccineId)
                                 <div class="form-body">
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            VaccineName
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-3">
+                                            שם החיסון
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-5">
                                             @Html.TextBoxFor(m => m.VaccineName, new { @class = "form-control input-height", placeholder = "enter VaccineName" })
@@ -44,9 +46,9 @@
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Manufacturer
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-3">
+                                            יצרן
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-5">
                                             @Html.TextBoxFor(m => m.Manufacturer, new { @class = "form-control input-height", placeholder = "enter Manufacturer" })
@@ -55,9 +57,9 @@
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            ValidityOfVaccine
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-3">
+                                            תוקף החיסון
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-5">
                                             @Html.TextBoxFor(model => model.ValidityOfVaccine, new { @class = "form-control input-height", placeholder = "statue ValidityOfVaccine" })
@@ -67,9 +69,9 @@
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Month
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-3">
+                                            מחזוריות
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-5">
                                             @Html.TextBoxFor(model => model.Month, new { @class = "form-control input-height", placeholder = "Month " })
@@ -82,7 +84,7 @@
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="offset-md-3 col-md-3">
-                                                <button type="submit" class="btn btn-info" id="submitData">Submit</button>
+                                                <button type="submit" class="btn btn-info" id="submitData">שמור שינויים</button>
 
                                             </div>
 

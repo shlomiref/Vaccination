@@ -103,23 +103,7 @@
 
     <form asp-action="VaccinatePatient" enctype="multipart/form-data">
 
-        <div class="row">
-            <div class="col-xl-7"></div>
-            <div class="col-xl-7">
-                <div class="" style="z-index:0;">
-
-                    <img id="BannerPic" decoding="async" src="~/Image/download.png" asp-append-version="true" style="object-fit: cover; width: 100%; aspect-ratio:10/6;" />
-
-                </div>
-                <div class="profile-image" style="z-index:1">
-                    <a href="#">
-
-                        <img decoding="async" src="~/Image/download.png" asp-append-version="true" style="object-fit: cover; aspect-ratio: 1/1; width: 35%; position:absolute; top:45%; border-radius:50%; margin-left:3%; border:5px solid white" />
-
-                    </a>
-                </div>
-            </div>
-        </div>
+       
         @*<div>
             <a href="@Url.Action("DownloadExcel","ManageAccount", new {Patientid = Model.PatientId })">Download Excel</a>
         </div>*@
@@ -131,8 +115,8 @@
                 <br />
                 <div class="row">
                     <div class="btn-group" role="group" style="font-size:1.3em; padding-left:6%">
-                        <span id="SPAN1"><input type="text" name="patientid" id="textsend" onkeyup="success()" class="btn btn-secondary" style="background-color: whitesmoke; color: black; width: auto; height: 2em; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center;" placeholder="Enter patient Id" /></span>
-                        <button type="submit" id="button" disabled class="btn btn-secondary" style="background-color: steelblue; color: white; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">Search</button>
+                        <span id="SPAN1"><input type="text" name="patientid" id="textsend" onkeyup="success()" class="btn btn-secondary" style="background-color: whitesmoke; color: black; width: auto; height: 2em; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center;" placeholder="הכנס ת''ז" /></span>
+                        <button type="submit" id="button" disabled class="btn btn-secondary" style="background-color: steelblue; color: white; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">חפש</button>
                     </div>
                 </div>
                 <br /><br /><br />
@@ -143,7 +127,7 @@
                                 @{
                                     var patid = @Html.DisplayFor(model => model.UniqueId);
                                     <div class="col-6">
-                                        <a href="@Url.Action("DownloadExcel","ManageAccount", new {UniqueId = patid})" id="download">Download Excel</a>
+                                        <a href="@Url.Action("DownloadExcel","ManageAccount", new {UniqueId = patid})" id="download">הורד דו''ח</a>
                                     </div>
                                 }
 
@@ -171,21 +155,21 @@
                                             <tr>
 
                                                 <th>
-                                                    VaccineName
+                                                    שם החיסון
                                                 </th>
                                                 <th>
-                                                    Next scheduled Date
+                                                    תאריך משוער
                                                 </th>
                                                 <th>
-                                                   Vaccinated Date
+                                                   תאריך ביצוע
                                                 </th>
                                                 <th>
-                                                    Therapist
+                                                    מטפל
                                                 </th>
                                                 <th>
-                                                     Vaccinated Status
+                                                     סטטוס
                                                 </th>
-                                                <th> Action</th>
+                                                <th> בצע חיסון</th>
                                             </tr>
 
                                             @foreach (var item in Model.PatList)
@@ -200,7 +184,7 @@
                                                     <td>
                                                         @if (item.VaccinatedDate == null)
                                                         {
-                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: saddlebrown; font-weight: bold;  width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">NO Date Yet</button>
+                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: saddlebrown; font-weight: bold;  width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">לא בוצע</button>
                                                         }
                                                         else
                                                         {
@@ -210,7 +194,7 @@
                                                     <td>
                                                         @if (item.Therapist == null)
                                                         {
-                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: saddlebrown; font-weight: bold; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">NO Therapist Yet</button>
+                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: saddlebrown; font-weight: bold; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">טרם שובץ מטפל</button>
                                                         }
                                                         else
                                                         {
@@ -221,12 +205,12 @@
                                                     <td>
                                                         @if (item.Status == true)
                                                         {
-                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: seagreen; font-weight: bold;  width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">Yes </button>
+                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: seagreen; font-weight: bold;  width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">בוצע </button>
 
                                                         }
                                                         else
                                                         {
-                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: gray; font-weight: bold; color: darkred; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">No</button>
+                                                            <button type="button" disabled class="btn btn-secondary" style="background-color: gray; font-weight: bold; color: darkred; width: auto; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px; text-align: center; padding-left: 15px; padding-right: 15px; display: inline-flex; align-items: center; ">לא בוצע</button>
 
 
                                                         }
@@ -235,7 +219,7 @@
                                                     <td>
                                                         @*<input type = "button"  id = "btnPost" value = "Post Data" />*@
                                                         @*<button style="background-color: white; font-weight: bold; height: 2em; margin-left: 1%; margin-right: 1%; border-radius: 10px;" class="PatientVaccina" id="btnPost" value="@item.PatientVaccinatedId">Vaccinate</button>*@
-                                                        @Html.ActionLink("Vaccinate", "VaccinatePatient1", new { id = item.PatientVaccinatedId })
+                                                        @Html.ActionLink("חסן", "VaccinatePatient1", new { id = item.PatientVaccinatedId })
                                                     </td>
                                                 </tr>
                                             }

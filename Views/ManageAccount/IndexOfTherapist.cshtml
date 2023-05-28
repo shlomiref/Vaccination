@@ -3,32 +3,65 @@
     ViewBag.Title = "IndexOfTherapist";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link href="~/Fontawesome/css/StyleSheet1.css" rel="stylesheet" />
+<img src="~/Image/Corona-vaccine.jpg" style="width:1900px; height:450px; " />
 
-<div class="m-4">
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="single_element">
+                    <div class="quick_activity">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="quick_activity_wrap">
+                                    <div class="single_quick_activity d-flex">
+                                        <div class="icon">
 
-    <div class="row row-cols-1 row-cols-md-1 g-3">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Manage Patient</h5>
-                    <a href="GetPatient" class="btn btn-primary">Manage Patient</a>
+                                            <img src="~/Image/man.svg" alt="">
+                                        </div>
+                                        <div class="count_content">
+                                            <h3><span class="counter">520</span> </h3>
+                                            <p>מטפלים</p>
+                                        </div>
+                                    </div>
+                                    <div class="single_quick_activity d-flex">
+                                        <div class="icon">
+                                            <img src="~/Image/cap.svg" alt="">
+
+                                        </div>
+                                        <div class="count_content">
+                                            <h3><span class="counter">6969</span> </h3>
+                                            <p>מרפאות</p>
+                                        </div>
+                                    </div>
+                                    <div class="single_quick_activity d-flex">
+                                        <div class="icon">
+                                            <img src="~/Image/wheel.svg" alt="">
+                                        </div>
+                                        <div class="count_content">
+                                            <h3><span class="counter">7510</span> </h3>
+                                            <p>מטופלים</p>
+                                        </div>
+                                    </div>
+                                    <div class="single_quick_activity d-flex">
+                                        <div class="icon">
+
+                                            <img src="~/Image/pharma.svg" alt="">
+                                        </div>
+                                        <div class="count_content">
+                                            <h3><span class="counter">2110</span> </h3>
+                                            <p>חיסונים</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">vaccination Record</h5>
-
-                    <a href="GetVaccination" class="btn btn-primary">Manage Vaccination</a>
-                </div>
-            </div>
-        </div>
-
     </div>
-  
-
 </div>
 
 @if (ViewBag.message != null)

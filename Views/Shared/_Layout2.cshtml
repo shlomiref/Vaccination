@@ -16,6 +16,7 @@
 </head>
 
 <body>
+        
     <div class="wrapper">
         @*Sidebar Navegation Start Here*@
         <nav id="sidebar" class="sidebar js-sidebar">
@@ -35,7 +36,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link fs-4" href="@Url.Action("GetVaccination", "ManageAccount")">
                             <i class="fa-solid fa-syringe"></i><span class="align-middle">חיסונים</span>
-                           
+
                         </a>
                     </li>
 
@@ -54,9 +55,6 @@
                         </a>
                     </li>
 
-
-
-
                 </ul>
             </div>
         </nav>
@@ -69,7 +67,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
                         @*Top Navegation Start Here*@
-                        
+
                         <li class="nav-item dropdown">
 
                             <a class="nav-link d-none d-sm-inline-block fs-4" href="#" data-bs-toggle="dropdown">
@@ -82,15 +80,17 @@
                             </a>
                         </li>
                         @*<li class="nav-item">
-                            <a class=" d-inline-block d-sm-none nav-link fs-4" href="#">
-                                <i class="fa-duotone fa-solid"></i>&nbsp;<span>Change Password&nbsp;@Session["username"]</span>
-                            </a>
-                        </li>*@
+            <a class=" d-inline-block d-sm-none nav-link fs-4" href="#">
+                <i class="fa-duotone fa-solid"></i>&nbsp;<span>Change Password&nbsp;@Session["username"]</span>
+            </a>
+        </li>*@
                         <li class="nav-item">
                             <a class="nav-link d-none d-sm-inline-block fs-4" href="@Url.Action("LogOff", "Account")">
                                 <i class="fa-regular fa-arrow-up-left-from-circle"></i>
                             </a>
                         </li>
+                        <img src="~/Image/Free_Sample_By_Wix.jpg" style="height:45px; width:45px" /> &nbsp;
+
                     </ul>
                 </div>
             </nav>
@@ -99,23 +99,27 @@
                 <div class="container-fluid p-0">
                     @RenderBody()
                 </div>
+
+
             </main>
             @*Footer Section Start*@
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6 text-start">
-                            <p class="mb-0">
-                                <a class="text-muted nav-link" href="@Url.Action("IndexOfTherapist", "ManageAccount")">&copy; @DateTime.Now.Year<strong>&nbsp;Vaccine App</strong></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <div class="footer-basic">
+                <footer>
+                    <div class="social"><a href="mailto:shlomiref1991@gmail.com"><ion-icon name="mail"></ion-icon></a><a href="https://maps.google.com/?q=31.668982891638006, 34.57412589836485" target="_blank"><ion-icon name="map"></ion-icon></a><a href="tel:972503892656"><ion-icon name="call"></ion-icon></a><a href="https://wa.me/972503892656"><ion-icon name="logo-whatsapp"></ion-icon></a></div>
+                    <ul class="list-inline">
+
+                        <li class="list-inline-item"><a href="#">קצת עלינו</a></li>
+                        <li class="list-inline-item"><a href="@Url.Action("Index", "ManageAccount")">דף הבית</a></li>
+                    </ul>
+                    <p class="copyright">פרויקט גמר © 2023</p>
+                </footer>
+            </div>
         </div>
     </div>
     @RenderSection("scripts", false)
     <script src="~/Content/JS/bootstrap.js"></script>
     <script src="~/Content/JS/app.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

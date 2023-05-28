@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<div class="row">
+<div class="row" >
     <div class="col">
-        <div class="row g-3">
+        <div class="row g-3" >
             <div class="col-md-4">
                 <h2 class="text-info">@Model.FirstName  @Model.LastName</h2>
             </div>
-            <div class="col-md-4">
-             Vaccina Name   <h2 class="text-info">@Model.vaccineName </h2>
+            <div class="col-md-4" >
+             שם החיסון   <h2 class="text-info">@Model.vaccineName </h2>
             </div>
         </div>
         <hr />
@@ -32,13 +32,13 @@
                         @Html.ValidationMessageFor(x => x.vaccineName, "", new { @class = "text-danger" })
                     </div>*@
                     <div class="col-md-6">
-                        @Html.Label("Vaccinated Patient", new { @class = "form-label fs-4" })
+                        @Html.Label("חסן מטופל", new { @class = "form-label fs-4" })
                         @Html.EditorFor(model => model.Status)
                        
                     </div>
 
                     <div class="col-md-6 mt-4">
-                        <button type="submit" class="btn btn-success btn-lg col-12 mt-4"><i class="fa-solid fa-up fs-4"></i> Update</button>
+                        <button type="submit" class="btn btn-success btn-lg col-12 mt-4"><i class="fa-solid fa-up fs-4"></i> שמור שינויים</button>
                     </div>
                 </div>
             }

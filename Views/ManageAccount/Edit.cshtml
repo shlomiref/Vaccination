@@ -5,53 +5,11 @@
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-@*<div class="row">
-    <div class="col">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <h2 class="text-info">@Model.Name</h2>
-            </div>
-        </div>
-        <hr />
-        <div class="col-md-12">
-            @using (Html.BeginForm("Edit", "ManageAccount", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.HiddenFor(x => x.id)
-                @Html.HiddenFor(x => x.Email)
+<div class="card shadow mb-2 p-5" style=" margin: 0px 50px 0px 350px;
+    max-width: 750px;
+    max-height: 750px;">
 
-                <div class="row g-3">
-                    <div class="col-md-12">
-                        @Html.LabelFor(x => x.Name, new { @class = "form-label fs-4" })
-                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control fs-4" })
-                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
-                    </div>
-
-                    <div class="col-md-6">
-                        @Html.LabelFor(x => x.Status, new { @class = "form-label fs-4" })
-                        @Html.EditorFor(model => model.Status)
-                        @Html.ValidationMessageFor(x => x.Status, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-6">
-                        @Html.LabelFor(x => x.PhoneNumber, new { @class = "form-label fs-4" })
-                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control fs-4" })
-                        @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "text-danger" })
-                    </div>
-
-
-                    <div class="col-md-6 mt-4">
-                        <button type="submit" class="btn btn-success btn-lg col-12 mt-4"><i class="fa-solid fa-up fs-4"></i> Update</button>
-                    </div>
-                </div>
-            }
-
-        </div>
-    </div>
-</div>*@
-
-
-<div class="card shadow mb-2 p-5">
-
-    <h2 class="text-info">Edit New User</h2>
+    <h2 class="text-info">שינוי פרטי משתמש  </h2>
     <hr />
     
     <div class="row mb-2">
@@ -60,7 +18,7 @@
         </div>
     </div>
     <div class="page-content-wrapper">
-        <div class="page-content" style="min-height:1603px">
+        <div class="page-content" >
             <div class="page-bar">
 
             </div>
@@ -77,9 +35,9 @@
                                 @Html.HiddenFor(x => x.Email)
                                 <div class="form-body">
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Full Name
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-3">
+                                            שם מלא
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-5">
                                             @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-height", placeholder = "enter fullname" })
@@ -88,9 +46,9 @@
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Phone Number
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-3">
+                                            מספר פלאפון
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-5">
                                             @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control input-height", placeholder = "enter Phone number" })
@@ -99,9 +57,9 @@
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Email
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-3">
+                                            פעיל/לא פעיל
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-5">
                                             @Html.EditorFor(model => model.Status, new { @class = "form-control input-height", placeholder = "statue check" })
@@ -114,7 +72,7 @@
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="offset-md-3 col-md-3">
-                                                <button type="submit" class="btn btn-info" id="submitData">Submit</button>
+                                                <button type="submit" class="btn btn-info" id="submitData">שמור שינויים</button>
 
                                             </div>
 
@@ -122,18 +80,12 @@
                                     </div>
                                 </div>
                             </form>
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
 @section scripts{
     <script src="~/Content/JS/jquery-3.6.0.js"></script>

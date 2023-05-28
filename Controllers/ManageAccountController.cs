@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace AppForVaccine.Controllers
 {
@@ -48,7 +50,10 @@ namespace AppForVaccine.Controllers
         // GET: ManageAccount
         public ActionResult Index()
         {
+          
+               
             return View();
+
         }
         //[HttpPost]
         ////[ValidateAntiForgeryToken]
@@ -118,7 +123,7 @@ namespace AppForVaccine.Controllers
           
                 var PatientData = _db.PatientVaccinations.Where(x => x.Status == false && x.scheduledDate <= filterD).ToList();
                 var vReminderlist = new List<VaccinationReminderModel>();
-
+                
                 foreach (var item in PatientData)
                 {
                     var vr = new VaccinationReminderModel()
@@ -129,13 +134,18 @@ namespace AppForVaccine.Controllers
                         PatientId = item.PatientId,
                         Status = item.Status,
                         PatientVaccinatedId = item.PatientVaccinatedId,
-                        scheduledDate = item.scheduledDate.Value.ToString("MM/dd/yyyy")
+                        scheduledDate = item.scheduledDate.Value.ToString("MM/dd/yyyy"),
+
                     };
-                    var snd = new SmsEntity()
+
+                var phone = _db.Patients.Where(x => x.PatientId == item.PatientId).FirstOrDefault();
+
+
+                var snd = new SmsEntity()
                     {
-                        content = "",
-                        Mobile = "",
-                        sender = "",
+                    content = "Vaccine for " + item.VaccineName + "is due to take place",
+                    Mobile = phone.Phone,
+                        //sender = "",
                     };
                     SmsSenderPoint smsSenderPoint = new SmsSenderPoint();
                     smsSenderPoint.GetAPIReponse(snd);
@@ -294,7 +304,7 @@ namespace AppForVaccine.Controllers
         {
             var TherapistList = _db.Therapists.ToList();
            
-            return View(TherapistList);
+            return View(TherapistList); 
         }
         [HttpGet]
         public ActionResult UserList()
@@ -314,8 +324,11 @@ namespace AppForVaccine.Controllers
                 };
                 userList.Add(nuser);
             }
+            int numberOfRecords = userList.Count;
             return View(userList);
+
         }
+        
         public ActionResult Register()
         {
             return View();
@@ -353,6 +366,8 @@ namespace AppForVaccine.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+
+          
         }
 
         public ActionResult ChangePassword()
@@ -437,6 +452,8 @@ namespace AppForVaccine.Controllers
                             DateTime = DateTime.Now,
                             UniqueId = RandomString(8),
                             PatientNumber = model.PatientNumber,
+
+
                         };
                         _db.Patients.Add(valRecord);
                         _db.SaveChanges();                    //return RedirectToAction("UserList", "ManageAccount");
@@ -513,16 +530,16 @@ namespace AppForVaccine.Controllers
                        
                         foreach (var item in pati)
                          {
-                            var valpat = new PatientVaccination()
-                            {
-                                PatientId = item.PatientId,
-                                FirstName = item.FirstName,
-                                LastName = item.LastName,
-                                VaccineName = model.VaccineName,
-                                Status = false,
-                                PatientNumber = item.PatientNumber,
-                                // NextVaccination = "2023 - 02 - 02  " + item.Month,
-                               scheduledDate = Convert.ToDateTime(model.ValidityOfVaccine)
+                        var valpat = new PatientVaccination()
+                        {
+                            PatientId = item.PatientId,
+                            FirstName = item.FirstName,
+                            LastName = item.LastName,
+                            VaccineName = model.VaccineName,
+                            Status = false,
+                            PatientNumber = item.PatientNumber,
+                            // NextVaccination = "2023 - 02 - 02  " + item.Month,
+                            scheduledDate = Convert.ToDateTime(model.ValidityOfVaccine),
 
                             };
                             _db.PatientVaccinations.Add(valpat);

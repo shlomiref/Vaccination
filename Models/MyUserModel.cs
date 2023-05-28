@@ -6,6 +6,17 @@ using System.Web;
 
 namespace AppForVaccine.Models
 {
+    public class index
+    {
+
+        public int therapistNum { get; set; }
+        public int cityNum { get; set; }
+        public int UserNum { get; set; }
+        public int patientNum { get; set; }
+
+
+
+    }
     public class MyUserModel
     {
         public string id { get; set; }

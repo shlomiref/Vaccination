@@ -388,6 +388,7 @@
     <Content Include="Fontawesome\css\regular.min.css" />
     <Content Include="Fontawesome\css\solid.css" />
     <Content Include="Fontawesome\css\solid.min.css" />
+    <Content Include="Fontawesome\css\StyleSheet1.css" />
     <Content Include="Fontawesome\css\svg-with-js.css" />
     <Content Include="Fontawesome\css\svg-with-js.min.css" />
     <Content Include="Fontawesome\css\thin.css" />
@@ -16511,12 +16512,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\cap.svg" />
+    <Content Include="Image\Corona-vaccine.jpg" />
     <Content Include="Image\download.png" />
     <Content Include="Image\Free_Sample_By_Wix.jpg" />
     <Content Include="Image\images.jfif" />
+    <Content Include="Image\injection-to-boy.jpg" />
     <Content Include="Image\login.png" />
+    <Content Include="Image\man.svg" />
+    <Content Include="Image\pharma.svg" />
     <Content Include="Image\plus.png" />
     <Content Include="Image\pn.jpg" />
+    <Content Include="Image\shutterstock_26170495.jpg" />
+    <Content Include="Image\wheel.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Fontawesome\less\brands.less" />

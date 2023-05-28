@@ -1,36 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using System.Text; // for class Encoding
-using System.IO;
-
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 namespace AppForVaccine
 {
     public class Sms019
     {
-        static void Main(string phone, string code)
+        public static void Main()
         {
 
-            String url = "https://019sms.co.il/api";
-            String xml = "<?xml version='1.0' encoding='UTF8' Authorization=' Bearer eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJmaXJzdF9rZXkiOiI1MTE4OCIsInNlY29uZF9rZXkiOiIzMTYwOTA2IiwiaXNzdWVkQXQiOiIxNy0wNC0yMDIzIDA3OjQzOjE5IiwidHRsIjo2MzA3MjAwMH0.2UW2NhaavdhJE9HZlf4VWRbzphGVKlhfc8hGUF7sXMs'?><sms><user><username>Shlomiref</username></user>< source > Vaccination Team </ source >   < destinations >< phone >" + phone+ "</ phone >< phone > " + phone + " </ phone ></ destinations >< message > test code " + code + " </ message ></ sms > ";
-            WebRequest webRequest = WebRequest.Create(url);
-            webRequest.Method = "POST";
-            byte[] bytes = Encoding.UTF8.GetBytes(xml);
-            webRequest.ContentType = "application/xml";
-            webRequest.ContentLength = (long)bytes.Length;
-            Stream requestStream = webRequest.GetRequestStream();
-            requestStream.Write(bytes, 0, bytes.Length);
-            
- requestStream.Close();
-            WebResponse response = webRequest.GetResponse();
-            Stream responseStream = response.GetResponseStream();
-            StreamReader streamReader = new StreamReader(responseStream);
-            string result = streamReader.ReadToEnd();
-            streamReader.Close(); responseStream.Close(); response.Close();
-            Console.WriteLine(result);
+            System.Environment.SetEnvironmentVariable("TWILIO_ACCOUNT_SID", "ACed98ad93dd2d2469ae4527f1df18ce4d");
+            System.Environment.SetEnvironmentVariable("TWILIO_AUTH_TOKEN", "7bbab09f3f6c35192515a96d66603f6c");
+            string accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
+            string authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+            TwilioClient.Init(accountSid, authToken);
+
         }
+
+        public void Validation(string Code,string phn) {
+
+            
+            var message = MessageResource.Create(
+                body: Code +  "  שלום, קוד האימות שלך הוא",
+                 from: new Twilio.Types.PhoneNumber("+13203226247"),
+                  to: new Twilio.Types.PhoneNumber(phn)
+
+
+              );
+                
+
+
+        }
+
     }
 }

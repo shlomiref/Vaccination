@@ -89,20 +89,19 @@ namespace AppForVaccine.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var phn = _db.Users.Where(x => x.Email == model.Email).FirstOrDefault();
             var code = _db.SmsCodes.Where(x => x.Email == model.Email).FirstOrDefault();
-
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
 
                 case SignInStatus.Success:
-                   
+
                     var smsCode = new SmsCode()
                     { Code = GenerateCode(), Email=phn.Email,Todday =DateTime.Today };
                     _db.SmsCodes.Add(smsCode);
                     _db.SaveChanges();
 
                     System.Environment.SetEnvironmentVariable("TWILIO_ACCOUNT_SID", "ACed98ad93dd2d2469ae4527f1df18ce4d");
-                    System.Environment.SetEnvironmentVariable("TWILIO_AUTH_TOKEN", "7bbab09f3f6c35192515a96d66603f6c");
+                    System.Environment.SetEnvironmentVariable("TWILIO_AUTH_TOKEN", "2e77daf10a43ca682514dccdd2aa6ea4");
 
                     ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 
@@ -114,18 +113,20 @@ namespace AppForVaccine.Controllers
 
                     TwilioClient.Init(accountSid, authToken);
 
-                    //var message = MessageResource.Create(
-                   //     body: smsCode.Code+ "  שלום, קוד האימות שלך הוא",
-                  //      from: new Twilio.Types.PhoneNumber("+13203226247"),
-                  //      to: new Twilio.Types.PhoneNumber(phn.PhoneNumber)
-                  //  );
+                   
+
+                   // var message = MessageResource.Create(
+                    //     body: smsCode.Code+ "  שלום, קוד האימות שלך הוא",
+                     //     from: new Twilio.Types.PhoneNumber("+13203226247"),
+                    //    to: new Twilio.Types.PhoneNumber(phn.PhoneNumber)
+                     // );
 
                     var snd = new SmsEntity()
                      {
 
-                         content = "Verify code " + smsCode.Code + "for one one day login",
+                         content =  smsCode.Code + "קוד האימות שלך הוא :   ",
                          Mobile = phn.PhoneNumber,
-                         sender = "Vaccine Team"
+                         //sender = "Vaccine Team"
                      };
                     SmsSenderPoint smsSenderPoint = new SmsSenderPoint();
                     smsSenderPoint.GetAPIReponse(snd);

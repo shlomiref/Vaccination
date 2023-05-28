@@ -26,6 +26,7 @@ namespace AppForVaccine.Models
         public string PatientNumber { get; set; }
 
         public List<PatientVaccinationModelList> PatList { get; set; }
+        public object Phone { get; internal set; }
     }
 
     public class PatientVaccinationModel
@@ -49,7 +50,7 @@ namespace AppForVaccine.Models
         public bool ReminderSent { get; set; }
         public string scheduledDate { get; set; }
         public string PatientNumber { get; set; }
-
+        public object phone { get; internal set; }
     }
 
     public class ReportModel

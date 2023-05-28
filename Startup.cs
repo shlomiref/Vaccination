@@ -41,7 +41,7 @@ namespace AppForVaccine
 
             //basic process to check
             BackgroundJob.Enqueue(() => Console.WriteLine("Getting Started with HangFire!"));
-            RecurringJob.AddOrUpdate(() => TaskReminder(), Cron.DayInterval(1));
+            RecurringJob.AddOrUpdate(() => TaskReminder(), Cron.Weekly);
 
             //will create hangfire dashboard
             app.UseHangfireDashboard();
@@ -60,7 +60,7 @@ namespace AppForVaccine
                 var phn = _db.Patients.Where(x => x.PatientId == item.PatientId).FirstOrDefault();
                 var snd = new SmsEntity()
                 {
-                    content = "Vaccine for " + item.VaccineName + "is due to take place",
+                    content = item.VaccineName+ "זוהי תזכורת עליכם לבצע את החיסון" + phn.LastName + phn.FirstName+ "שלום"  ,
                     Mobile = phn.Phone,
                     sender = "Vaccine Team"
                 };

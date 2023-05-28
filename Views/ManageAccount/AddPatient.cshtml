@@ -5,9 +5,11 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<div class="card shadow mb-2 p-5">
+<div class="card shadow mb-2 p-5" style=" margin: 0px 50px 0px 350px;
+    max-width: 750px;
+    max-height: 550px;">
 
-    <h2 class="text-info">Add New Patient</h2>
+    <h2 class="text-info">הוספת מטופל חדש</h2>
     <hr />
 
     <div class="row mb-2">
@@ -16,7 +18,7 @@
         </div>
     </div>
     <div class="page-content-wrapper">
-        <div class="page-content" style="min-height:1603px">
+        <div class="page-content" >
             <div class="page-bar">
 
             </div>
@@ -32,88 +34,88 @@
 
                                 <div class="form-body">
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            FirstName
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            שם פרטי
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control input-height", placeholder = "enter FirstName" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control input-height", placeholder = "הזן את שם המטופל" })
                                             @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            LastName
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            שם משפחה
+                                            <span class="required" aria-required="true"> </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control input-height", placeholder = "enter LastName" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control input-height", placeholder = "הזן את שם המשפחה" })
                                             @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            PatientId
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            תעודת זהות מטופל
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(m => m.PatientNumber, new { @class = "form-control input-height", placeholder = "enter PatientId" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(m => m.PatientNumber, new { @class = "form-control input-height", placeholder = "הזן את ת.ז המטופל" })
                                             @Html.ValidationMessageFor(m => m.PatientNumber, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Phone Number
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            מספר פלאפון
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control input-height", placeholder = "enter Phone Number" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control input-height", placeholder = "מספר פלאפון" })
                                             @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            City
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            מרפאה
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
+                                        <div class="col-md-3">
                                             @Html.DropDownList("City", ViewBag.City as SelectList, new { @class = "form-control", @id = "City" })
                                             @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
+                                        <label class="control-label col-md-2">
                                             Email
-                                            <span class="required" aria-required="true"> * </span>
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-height", placeholder = "enter email" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-height", placeholder = "הזן כתובת מייל" })
                                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Address
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            כתובת
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control input-height", placeholder = "enter address" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control input-height", placeholder = "הזן כתובת" })
                                             @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            DateOfBirth
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            תאריך לידה
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
+                                        <div class="col-md-3">
                                             @Html.EditorFor(x => x.Birthday, new { htmlAttributes = new { @class = "form - control input - height", @type = "date" } })
                                             @Html.ValidationMessageFor(x => x.Birthday, "", new { @class = "text-danger" })
 
@@ -123,7 +125,7 @@
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="offset-md-3 col-md-3">
-                                                <button type="submit" class="btn btn-info" id="submitData">Submit</button>
+                                                <button type="submit" class="btn btn-info" id="submitData">שמור</button>
 
                                             </div>
 
@@ -159,80 +161,6 @@
 
 }
 
-
-
-@*<div class="row">
-        <div class="col">
-            <h2 class="text-info">Add Vacinnation Record User</h2>
-            <hr />
-            <div class="col-md-12">
-                @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", OnComplete = "clearAll" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="row mb-2">
-                        <div id="msg">
-
-                        </div>
-                    </div>
-                    <div class="row g-3">
-                        <div class="col-md-12">
-                            @Html.LabelFor(x => x.FirstName, new { @class = "form-label fs-4" })
-                            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control fs-4" })
-                            @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-12">
-                            @Html.LabelFor(x => x.LastName, new { @class = "form-label fs-4" })
-                            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control fs-4" })
-                            @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-12">
-                            @Html.LabelFor(x => x.Phone, new { @class = "form-label fs-4" })
-                            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control fs-4" })
-                            @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-12">
-                            @Html.LabelFor(x => x.City, new { @class = "form-label fs-4" })
-                            @Html.TextBoxFor(x => x.City, new { @class = "form-control fs-4" })
-                            @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-6">
-                            @Html.LabelFor(x => x.Email, new { @class = "form-label fs-4" })
-                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control fs-4" })
-                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="col-md-6">
-                            @Html.LabelFor(x => x.Address, new { @class = "form-label fs-4" })
-                            @Html.TextBoxFor(x => x.Address, new { @class = "form-control fs-4" })
-                            @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-6">
-                            @Html.Label("Birthday", new { @class = "form-label fs-4" })
-                            @Html.EditorFor(x => x.Birthday, new { htmlAttributes = new { @class = "form-control fs-4", @type = "date" } })
-                            @Html.ValidationMessageFor(x => x.Birthday, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="col-md-6 mt-4">
-                            <button type="submit" class="btn btn-success btn-lg col-12 mt-4"><i class="fa-regular fa-floppy-disk fs-4"></i> Save</button>
-                        </div>
-                    </div>
-                    }
-
-            </div>
-        </div>
-    </div>
-    @section scripts{
-        <script src="~/Content/JS/jquery-3.6.0.js"></script>
-        <script src="~/Content/JS/jquery.validate.js"></script>
-        <script src="~/Content/JS/jquery.validate.unobtrusive.js"></script>
-        <script src="~/Content/JS/jquery.unobtrusive-ajax.js"></script>
-        <script>
-            $("#form0").attr("enctype", "multipart/form-data")
-
-            function clearAll() {
-                $("#form0").trigger("reset");
-            }
-        </script>*@
 <script>
     $(document).ready(function () {
         $('.date').datepicker();
@@ -240,4 +168,4 @@
 
 </script>
 
-}
+

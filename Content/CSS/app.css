@@ -6834,7 +6834,8 @@ textarea.form-control-lg {
 
 .text-info {
     --bs-text-opacity: 1;
-    color: rgba(var(--bs-info-rgb),var(--bs-text-opacity)) !important
+    color: rgba(var(--bs-info-rgb),var(--bs-text-opacity)) !important;
+    text-align: right;
 }
 
 .text-warning {
@@ -12568,7 +12569,8 @@ textarea.form-control-lg {
     flex: 1;
     max-width: 100vw;
     padding: 1.5rem 1.5rem .75rem;
-    width: 100vw
+    width: 100vw;
+    
 }
 
 @media(min-width:768px) {
@@ -12689,8 +12691,8 @@ textarea.form-control-lg {
 }
 
 footer.footer {
-    background: #c6c8cc;
-    direction: ltr;
+    background: #cccccd;
+    direction: rtl;
     padding: 1rem .875rem
 }
 
@@ -13069,7 +13071,8 @@ body {
     }
 
 .table > :not(:last-child) > :last-child > *, .table tbody, .table td, .table tfoot, .table th, .table thead, .table tr {
-    border-color: #dee2e6
+    border-color: #dee2e6;
+    text-align: right;
 }
 
 .table > tbody > tr > td {
@@ -14292,3 +14295,62 @@ span.flatpickr-weekday {
     width: 260px
 }
 
+.footer-basic {
+    padding: 40px 0;
+    background-color: #ffffff;
+    color: #4b4c4d;
+}
+
+    .footer-basic ul {
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    .footer-basic li {
+        padding: 0 10px;
+    }
+
+    .footer-basic ul a {
+        color: inherit;
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+        .footer-basic ul a:hover {
+            opacity: 1;
+        }
+
+    .footer-basic .social {
+        text-align: center;
+        padding-bottom: 25px;
+    }
+
+        .footer-basic .social > a {
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            margin: 0 8px;
+            color: inherit;
+            opacity: 0.75;
+        }
+
+            .footer-basic .social > a:hover {
+                opacity: 0.9;
+            }
+
+    .footer-basic .copyright {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 13px;
+        color: #aaa;
+        margin-bottom: 0;
+    }

@@ -15,19 +15,23 @@
     @RenderSection("Head", false)
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+   
 </head>
 
 <body>
-     
 
-  <div class="w3-clear"></div>
+
+    <div class="w3-clear"></div>
     <div class="wrapper">
         @*Sidebar Navegation Start Here*@
-        
+
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
                 <a class="sidebar-brand" href="@Url.Action("Index", "ManageAccount")">
-                    <span class="align-middle">מערכת מעקב חיסונים </span>
+                    <span class="align-middle">מנהל מערכת </span>
                 </a>
 
                 <ul class="sidebar-nav">
@@ -57,10 +61,10 @@
                     </li>
 
                     @*<li class="sidebar-item">
-                        <a class="sidebar-link fs-4" href="@Url.Action("GetVaccinationRecord", "ManageAccount")">
-                            <i class="fa-light fa-person"></i><span class="align-middle">Vaccine Patient</span>
-                        </a>
-                    </li>*@
+                            <a class="sidebar-link fs-4" href="@Url.Action("GetVaccinationRecord", "ManageAccount")">
+                                <i class="fa-light fa-person"></i><span class="align-middle">Vaccine Patient</span>
+                            </a>
+                        </li>*@
 
                     <li class="sidebar-item">
                         <a class="sidebar-link fs-4" href="@Url.Action("GetVaccine", "ManageAccount")">
@@ -89,10 +93,9 @@
 
                         </div>
 
-
-
-                    <li class="sidebar-header border-top mt-2 fs-4 text-muted">
-                    </li>
+                      
+                    <li class="sidebar-header border-top mt-2 fs-4 text-muted"></li>
+                    
 
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -110,11 +113,15 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link fs-4" href="https://localhost:44347/hangfire">
+                        <a class="sidebar-link fs-4" href="https://localhost:44347/hangfire" target="_blank">
                             <i class="fa-solid fa-server"></i><span class="align-middle">מעקב תזכורות</span>
                         </a>
                     </li>
-
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="https://console.twilio.com/us1/monitor/logs/sms?frameUrl=%2Fconsole%2Fsms%2Flogs%3Fx-target-region%3Dus1&currentFrameUrl=%2Fconsole%2Fsms%2Flogs%3F__override_layout__%3Dembed%26bifrost%3Dtrue%26x-target-region%3Dus1" target="_blank">
+                            <i class="fa-solid fa-messages"></i><span class="align-middle">מעקב הודעות</span>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
@@ -122,6 +129,7 @@
 
         <div class="main">
             <nav class="navbar navbar-expand navbar-light navbar-bg">
+
                 <a class="sidebar-toggle js-sidebar-toggle">
                     <i class="hamburger align-self-center"></i>
                 </a>
@@ -129,14 +137,11 @@
                     <ul class="navbar-nav navbar-align">
                         @*Top Navegation Start Here*@
                         <li class="nav-item dropdown">
-                            <a class=" d-inline-block d-sm-none nav-link fs-4" href="#">
-                                <i class="fa-duotone fa-hands-clapping"></i>&nbsp;<span>שלום!&nbsp;@Session["username"]</span>
-                            </a>
-
                             <a class="nav-link d-none d-sm-inline-block fs-4" href="#" data-bs-toggle="dropdown">
                                 <i class="fa-duotone fa-hands-clapping"></i>&nbsp;<span>שלום!&nbsp;@Session["username"]</span>
                             </a>
                         </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link d-none d-sm-inline-block fs-4" href="/ManageAccount/AdminProfile/@Session["id"]">
                                 <i class="fa-solid fa-user"></i>&nbsp;
@@ -147,14 +152,11 @@
                                 <i class="fa-regular fa-arrow-up-left-from-circle"></i>&nbsp;
                             </a>
                         </li>
-                        <div class="w3-dropdown-hover w3-right">
-                            <button class="w3-button w3-white">=</button>
-                            <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0 ">
-                                <a href="@Url.Action("Index", "ManageAccount")" class="w3-bar-item w3-button">ראשי <i class="fa-solid fa-gauge" ></i></a>
-                                <a href="#" class="w3-bar-item w3-button">Link 2</a>
-                                <a href="#" class="w3-bar-item w3-button">Link 3</a>
-                            </div>
-                        </div>
+                        <li class="nav-item dropdown">
+
+                            <img src="~/Image/Free_Sample_By_Wix.jpg" style="height:45px; width:45px" /> &nbsp;
+
+                        </li>
 
                     </ul>
                 </div>
@@ -164,23 +166,35 @@
                 <div class="container-fluid p-0">
                     @RenderBody()
                 </div>
+                <br><br><br> <br><br><br>
             </main>
             @*Footer Section Start*@
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6 text-start">
-                            <p class="mb-0">
-                                <a class="text-muted nav-link" href="@Url.Action("Index", "ManageAccount")">&copy; @DateTime.Now.Year<strong>&nbsp;Vaccine App</strong></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+
+
+            <div class="footer-basic">
+                <footer>
+                    <div class="social"><a href="mailto:shlomiref1991@gmail.com"><ion-icon name="mail"></ion-icon></a><a href="https://maps.google.com/?q=31.668982891638006, 34.57412589836485" target="_blank"><ion-icon name="map"></ion-icon></a><a href="tel:972503892656"><ion-icon name="call"></ion-icon></a><a href="https://wa.me/972503892656"><ion-icon name="logo-whatsapp"></ion-icon></a></div>
+                    <ul class="list-inline">
+
+                        <li class="list-inline-item"><a href="#">קצת עלינו</a></li>
+                        <li class="list-inline-item"><a href="@Url.Action("Index", "ManageAccount")">דף הבית</a></li>
+                    </ul>
+                    <p class="copyright">פרויקט גמר © 2023</p>
+                </footer>
+            </div>
+
+
         </div>
     </div>
     @RenderSection("scripts", false)
     <script src="~/Content/JS/bootstrap.js"></script>
     <script src="~/Content/JS/app.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
+
+

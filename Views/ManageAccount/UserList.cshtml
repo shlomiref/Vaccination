@@ -29,6 +29,7 @@
                 <tbody>
                     @foreach (var pdt in Model)
                     {
+
                         <tr>
                             <td>@Html.DisplayFor(p => pdt.Name)</td>
                             <td>@Html.DisplayFor(p => pdt.UserTypes)</td>
@@ -37,10 +38,10 @@
                             <td>@Html.DisplayFor(p => pdt.PhoneNumber)</td>
                             <td>
                                 <a href="@Url.Action("Edit", "ManageAccount", new {id = pdt.id })" class="btn btn-outline-warning btn-sm"><i class="fa-solid fa-pen-to-square fs-4"></i></a>
-                                
+
                             </td>
                         </tr>
-}
+                    }
                 </tbody>
             </table>
         </div>

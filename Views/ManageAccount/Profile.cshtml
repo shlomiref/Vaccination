@@ -5,9 +5,11 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<div class="card shadow mb-2 p-5">
+<div class="card shadow mb-2 p-5" style=" margin: 0px 50px 0px 350px;
+    max-width: 750px;
+    max-height: 750px;">
 
-    <h2 class="text-info">Add New User</h2>
+    <h2 class="text-info">פרופיל משתמש</h2>
     <hr />
 
     <div class="row mb-2">
@@ -16,7 +18,7 @@
         </div>
     </div>
     <div class="page-content-wrapper">
-        <div class="page-content" style="min-height:1603px">
+        <div class="page-content" >
             <div class="page-bar">
 
             </div>
@@ -32,34 +34,34 @@
 
                                 <div class="form-body">
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            FullName
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            שם מלא
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-height", placeholder = "enter Name" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-height", placeholder = "שם מלא" })
                                             @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            Manufacturer
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            פעיל/לא פעיל
+                                            <span class="required" aria-required="true">  </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.EditorFor(model => model.Status, new { @class = "form-control input-height", placeholder = "check status" })
+                                        <div class="col-md-3">
+                                            @Html.EditorFor(model => model.Status, new { @class = "form-control input-height", placeholder = "סטטוס" })
                                             @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <br />
                                     <div class="form-group row">
-                                        <label class="control-label col-md-1">
-                                            PhoneNumber
-                                            <span class="required" aria-required="true"> * </span>
+                                        <label class="control-label col-md-2">
+                                            פלאפון
+                                            <span class="required" aria-required="true"> </span>
                                         </label>
-                                        <div class="col-md-5">
-                                            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control input-height", placeholder = "statue PhoneNumber" })
+                                        <div class="col-md-3">
+                                            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control input-height", placeholder = "פלאפון" })
 
                                             @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
                                         </div>
@@ -69,7 +71,7 @@
                                     <div class="form-actions">
                                         <div class="row">
                                             <div class="offset-md-3 col-md-3">
-                                                <button type="submit" class="btn btn-info" id="submitData">Submit</button>
+                                                <button type="submit" class="btn btn-info" id="submitData">שמור</button>
 
                                             </div>
 
