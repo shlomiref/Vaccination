@@ -22,6 +22,9 @@ namespace AppForVaccine.Controllers
     [Authorize]
     public class ManageAccountController : Controller
     {
+        private const string Vaccinated = "חוסן";
+        private const string Not_Vaccinated = "לא חוסן";
+        private const string Age0To10 = "0 - 10";
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         private ApplicationSignInManager _signInManager;
@@ -47,13 +50,17 @@ namespace AppForVaccine.Controllers
                 _userManager = value;
             }
         }
+
         // GET: ManageAccount
+        [HttpGet]
         public ActionResult Index()
         {
-          
-               
-            return View();
-
+            var countersContainer = new CountersContainer();
+            countersContainer.Users = _db.Users.Count();
+            countersContainer.Therapist = _db.Therapists.Count();
+            countersContainer.Clinics = _db.CityLists.Count();
+            countersContainer.Patients = _db.Patients.Count();
+            return View(countersContainer);
         }
         //[HttpPost]
         ////[ValidateAntiForgeryToken]
@@ -72,7 +79,7 @@ namespace AppForVaccine.Controllers
             DateTime filterD = DateTime.Now.AddDays(7); // Get patient that are due in 7 days a
             if (patientid != null)
             {
-                var PatientData = _db.PatientVaccinations.Where(x => x.PatientId == patientid && x.Status == false && x.scheduledDate <= filterD).ToList();
+                var PatientData = _db.PatientVaccinations.Where(x => x.PatientId == patientid && x.Status == false && x.scheduledDate <= filterD && x.ReminderSent==false).ToList();
                 var vReminderlist = new List<VaccinationReminderModel>();
 
                 foreach (var item in PatientData)
@@ -94,7 +101,7 @@ namespace AppForVaccine.Controllers
             }
             else
             {
-                var PatientData = _db.PatientVaccinations.Where(x => x.Status == false && x.scheduledDate <= filterD).ToList();
+                var PatientData = _db.PatientVaccinations.Where(x => x.Status == false && x.scheduledDate <= filterD ).ToList();
                 var vReminderlist = new List<VaccinationReminderModel>();
 
                 foreach (var item in PatientData)
@@ -306,6 +313,7 @@ namespace AppForVaccine.Controllers
            
             return View(TherapistList); 
         }
+
         [HttpGet]
         public ActionResult UserList()
         {
@@ -328,7 +336,8 @@ namespace AppForVaccine.Controllers
             return View(userList);
 
         }
-        
+
+
         public ActionResult Register()
         {
             return View();
@@ -823,15 +832,15 @@ namespace AppForVaccine.Controllers
             dynamic ageRange = null;
             int Arange = 0;
             ViewBag.Vaccinations = new SelectList(_db.Vaccinations, "VaccineName", "VaccineName");
-            ViewBag.Age = new SelectList(new List<string> { "0 - 10", "11 - 20", "21 - 30", "31 - 40" , "41  and Above" });
+            ViewBag.Age = new SelectList(new List<string> { Age0To10, "11 - 20", "21 - 30", "31 - 40" , "41  and Above" });
             //ViewBag.City = new SelectList(new List<string> { "Tel Viv", "Jerusalem", "Haifa" });
             ViewBag.City = new SelectList(_db.CityLists, "City", "City");
-            ViewBag.Status = new SelectList(new List<string> { "Yes Vaccinated", "Not Vaccinated" });
+            ViewBag.Status = new SelectList(new List<string> { Vaccinated, Not_Vaccinated });
             if (VaccineName != null)
             {
-                if (Status == "Yes Vaccinated"){ st = true; }else if(Status == "Not Vaccinated") { st = false; }
+                if (Status == Vaccinated) { st = true; }else if(Status == Not_Vaccinated) { st = false; }
 
-                var PatientData = _db.PatientVaccinations.Where(x =>x.Status == st && x.VaccineName == VaccineName ).ToList();
+                var PatientData = _db.PatientVaccinations.Where(x =>x.Status == st && x.VaccineName == VaccineName && x.City==City).ToList();
                 var vReminderlist = new List<ReportModel>();
                 var vReprtAfterAge = new List<ReportModel>();
                 foreach (var item in PatientData)
@@ -853,7 +862,7 @@ namespace AppForVaccine.Controllers
                     };
                     vReminderlist.Add(vr);
                 }                
-                if (Age == "0 - 10") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 0 && p.Age <= 10).ToList(); }
+                if (Age == Age0To10) { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 0 && p.Age <= 10).ToList(); }
                 if (Age == "11 - 20") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 11 && p.Age <= 20).ToList(); }
                 if (Age == "21 - 30") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 21 && p.Age <= 30).ToList(); }
                 if (Age == "31 - 40") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 31 && p.Age <= 40).ToList(); }
@@ -898,12 +907,12 @@ namespace AppForVaccine.Controllers
             dynamic ageRange = null;
             int Arange = 0;
             ViewBag.Vaccinations = new SelectList(_db.Vaccinations, "VaccineName", "VaccineName");
-            ViewBag.Age = new SelectList(new List<string> { "0 - 10", "11 - 20", "21 - 30", "31 - 40", "41  and Above" });
+            ViewBag.Age = new SelectList(new List<string> { Age0To10, "11 - 20", "21 - 30", "31 - 40", "41  and Above" });
             //ViewBag.City = new SelectList(new List<string> { "Tel Viv", "Jerusalem", "Haifa" });
             ViewBag.City = new SelectList(_db.CityLists, "City", "City");
-            ViewBag.Status = new SelectList(new List<string> { "Yes Vaccinated", "Not Vaccinated" });
-            if (Status == "Yes Vaccinated") { st = true; } else if (Status == "Not Vaccinated") { st = false; }
-            var PatientData = _db.PatientVaccinations.Where(x => x.Status == st && x.VaccineName == VaccineName).ToList();
+            ViewBag.Status = new SelectList(new List<string> { Vaccinated, Not_Vaccinated });
+            if (Status == Vaccinated) { st = true; } else if (Status == Not_Vaccinated) { st = false; }
+            var PatientData = _db.PatientVaccinations.Where(x => x.Status == st && x.VaccineName == VaccineName && x.City == City).ToList();
             if (VaccineName != null)
             {
                 var vReminderlist = new List<ReportModel>();
@@ -927,7 +936,7 @@ namespace AppForVaccine.Controllers
                     };
                     vReminderlist.Add(vr);
                 }
-                if (Age == "0- 10") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 0 && p.Age <= 10).ToList(); }
+                if (Age == Age0To10) { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 0 && p.Age <= 10).ToList(); }
                 if (Age == "11 - 20") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 11 && p.Age <= 20).ToList(); }
                 if (Age == "21 - 30") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 21 && p.Age <= 30).ToList(); }
                 if (Age == "31 - 40") { vReprtAfterAge = vReminderlist.Where(p => p.Age >= 31 && p.Age <= 40).ToList(); }
@@ -1002,7 +1011,7 @@ namespace AppForVaccine.Controllers
                     }
                     else
                     {
-                        stTrue = "Not Vaccinated";
+                        stTrue = Not_Vaccinated;
                     }
 
                     Sheet.Cells[string.Format("A{0}", row)].Value = item.FirstName;
@@ -1048,7 +1057,7 @@ namespace AppForVaccine.Controllers
                     }
                     else
                     {
-                        stTrue = "Not Vaccinated";
+                        stTrue = Not_Vaccinated;
                     }
 
                     Sheet.Cells[string.Format("A{0}", row)].Value = item.FirstName;

@@ -53,7 +53,7 @@ namespace AppForVaccine
         {
             DateTime filterD = DateTime.Now.AddDays(7);
 
-            var PatientData = _db.PatientVaccinations.Where(x => x.Status == false && x.NextVaccinaDate <= filterD).ToList();
+            var PatientData = _db.PatientVaccinations.Where(x => x.Status == false && x.scheduledDate <= filterD&&x.ReminderSent==false).ToList();
             var vReminderlist = new List<VaccinationReminderModel>();
             foreach (var item in PatientData)
             {
@@ -65,7 +65,7 @@ namespace AppForVaccine
                     sender = "Vaccine Team"
                 };
 
-                SmsSenderPoint smsSenderPoint = new SmsSenderPoint();
+               SmsSenderPoint smsSenderPoint = new SmsSenderPoint();
                 smsSenderPoint.GetAPIReponse(snd);
                 var Patv = _db.PatientVaccinations.Where(x => x.PatientVaccinatedId == item.PatientVaccinatedId).FirstOrDefault();
                 Patv.ReminderSent = true;

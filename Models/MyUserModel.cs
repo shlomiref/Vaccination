@@ -31,8 +31,6 @@ namespace AppForVaccine.Models
         public string PhoneNumber { get; set; }
 
 
-
-
         public ApplicationUser Edit(ApplicationUser entity, MyUserModel model)
         {
             entity.Id = model.id;
@@ -42,7 +40,6 @@ namespace AppForVaccine.Models
             entity.UserTypes = model.UserTypes;
             entity.Name = model.Name;
             entity.UserName = model.Email;
-
             return entity;
         }
     }
@@ -83,6 +80,13 @@ namespace AppForVaccine.Models
         {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
         }
+    }
+    public class CountersContainer
+    {
+        public int Users { get; set; }
+        public int Patients { get; set; }
+        public int Clinics { get; set; }
+        public int Therapist { get; set; }
     }
 
 
