@@ -1,14 +1,13 @@
 ﻿
-@model IEnumerable<AppForVaccine.Models.MyUserModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    var modle2 =(AppForVaccine.Models.CountersContainer)Model ;
+}
 
 <link href="~/Fontawesome/css/StyleSheet1.css" rel="stylesheet" />
 
-@{
-    ViewBag.Title = "Usercunt";
-
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout1.cshtml";
-}
 <img src="~/Image/Corona-vaccine.jpg" style="width:1900px; height:350px; " />
 <div class="main_content_iner ">
     <div class="container-fluid p-0">
@@ -25,7 +24,7 @@
                                             <img src="~/Image/man.svg" alt="">
                                         </div>
                                         <div class="count_content">
-                                            <h3><span class="counter">123</span> </h3>
+                                            <h3><span class="counter">@modle2.Therapist</span> </h3>
                                             <p>מטפלים</p>
                                         </div>
                                     </div>
@@ -35,7 +34,7 @@
 
                                         </div>
                                         <div class="count_content">
-                                            <h3><span class="counter">6969</span> </h3>
+                                            <h3><span class="counter">@modle2.Clinics</span> </h3>
                                             <p>מרפאות</p>
                                         </div>
                                     </div>
@@ -44,7 +43,7 @@
                                             <img src="~/Image/wheel.svg" alt="">
                                         </div>
                                         <div class="count_content">
-                                            <h3><span class="counter">7510</span> </h3>
+                                            <h3><span class="counter">@modle2.Patients</span> </h3>
                                             <p>מטופלים</p>
                                         </div>
                                     </div>
@@ -56,7 +55,7 @@
                                             <img src="~/Image/pharma.svg" alt="">
                                         </div>
                                         <div class="count_content">
-                                            <h3><span class="counter">2110</span> </h3>
+                                            <h3><span class="counter">@modle2.Users</span> </h3>
                                             <p>משתמשים</p>
                                         </div>
                                     </div>
@@ -69,8 +68,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 
