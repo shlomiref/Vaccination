@@ -59,8 +59,20 @@ namespace AppForVaccine.Controllers
             countersContainer.Users = _db.Users.Count();
             countersContainer.Therapist = _db.Therapists.Count();
             countersContainer.Clinics = _db.CityLists.Count();
-            countersContainer.Patients = _db.Patients.Count();
+            countersContainer.vaccinations = _db.Vaccinations.Count();
             return View(countersContainer);
+            //@Session["username"]
+        }
+
+        public ActionResult IndexOfTherapist()
+        {
+            var countersContainer1 = new CountersContainer1();
+            countersContainer1.vaccinations = _db.Vaccinations.Count();
+            //countersContainer1.Users = _db.patientvaccinations.where<Therapist==>.Count().;
+            countersContainer1.Therapist = _db.Therapists.Count();
+            countersContainer1.Clinics = _db.CityLists.Count();
+            countersContainer1.Patients = _db.Patients.Count();
+            return View(countersContainer1);
         }
         //[HttpPost]
         ////[ValidateAntiForgeryToken]
@@ -69,10 +81,7 @@ namespace AppForVaccine.Controllers
         //    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         //    return RedirectToAction("Login", "Account");
         //}
-        public  ActionResult IndexOfTherapist()
-        {
-            return View();
-        }
+        
         [HttpGet]
         public ActionResult VaccineReminder(int? patientid)
         {
@@ -101,7 +110,7 @@ namespace AppForVaccine.Controllers
             }
             else
             {
-                var PatientData = _db.PatientVaccinations.Where(x => x.Status == false && x.scheduledDate <= filterD ).ToList();
+                var PatientData = _db.PatientVaccinations.Where(x => x.Status == false && x.scheduledDate <= filterD && x.ReminderSent==false ).ToList();
                 var vReminderlist = new List<VaccinationReminderModel>();
 
                 foreach (var item in PatientData)
@@ -473,7 +482,9 @@ namespace AppForVaccine.Controllers
                             var vaccine = _db.Vaccinations.ToList();
                             foreach (var item in vaccine)
                             {                               
-                                int month = Convert.ToInt32(ifCreated.Birthday.ToString("MM")) + item.Month.Value;
+                                
+                                //int month = Convert.ToInt32(ifCreated.Birthday.ToString("MM")) + item.Month.Value;
+                                int month =  item.Month.Value;
                                 DateTime nextAppointment = ifCreated.Birthday.AddMonths(month);
                                 var valpat = new PatientVaccination()
                                 {
@@ -488,14 +499,14 @@ namespace AppForVaccine.Controllers
                                     NextVaccinaDate= nextAppointment,
                                     PatientNumber = ifCreated.PatientNumber,
                                    // NextVaccination = "2023 - 02 - 02  " + item.Month,
-                                    scheduledDate = Convert.ToDateTime(item.ValidityOfVaccine)
+                                    scheduledDate = nextAppointment
 
                                 };
                                 _db.PatientVaccinations.Add(valpat);
                                 _db.SaveChanges();
                             }
                         }
-                        return RedirectToAction("GetVaccination", "ManageAccount");
+                        return RedirectToAction("GetPatient", "ManageAccount");
                     }
                     return PartialView("_patientexist"); ;
                     AddErrors(result);

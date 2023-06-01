@@ -16515,7 +16515,10 @@
     <Content Include="Image\cap.svg" />
     <Content Include="Image\Corona-vaccine.jpg" />
     <Content Include="Image\download.png" />
+    <Content Include="Image\Free_Sample_By_Wix %281%29.svg" />
     <Content Include="Image\Free_Sample_By_Wix.jpg" />
+    <Content Include="Image\health-doctor-svgrepo-com.svg" />
+    <Content Include="Image\hospital-svgrepo-com %281%29.svg" />
     <Content Include="Image\images.jfif" />
     <Content Include="Image\injection-to-boy.jpg" />
     <Content Include="Image\login.png" />
@@ -16524,6 +16527,8 @@
     <Content Include="Image\plus.png" />
     <Content Include="Image\pn.jpg" />
     <Content Include="Image\shutterstock_26170495.jpg" />
+    <Content Include="Image\syringe-and-vial-of-vaccine.jpg" />
+    <Content Include="Image\syringe-svgrepo-com.svg" />
     <Content Include="Image\wheel.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

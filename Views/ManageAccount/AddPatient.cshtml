@@ -116,7 +116,7 @@
                                             <span class="required" aria-required="true">  </span>
                                         </label>
                                         <div class="col-md-3">
-                                            @Html.EditorFor(x => x.Birthday, new { htmlAttributes = new { @class = "form - control input - height", @type = "date" } })
+                                            @Html.EditorFor(x => x.Birthday, new { htmlAttributes = new { @class = "form - control input - height", @type = "date" ,placeholder = "dd-mm-yyyy" } })
                                             @Html.ValidationMessageFor(x => x.Birthday, "", new { @class = "text-danger" })
 
                                         </div>

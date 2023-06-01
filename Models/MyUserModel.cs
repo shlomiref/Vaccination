@@ -84,12 +84,21 @@ namespace AppForVaccine.Models
     public class CountersContainer
     {
         public int Users { get; set; }
-        public int Patients { get; set; }
+        public int vaccinations { get; set; }
         public int Clinics { get; set; }
         public int Therapist { get; set; }
     }
 
+    public class CountersContainer1
+    {
+        public int Users { get; set; }
+        public int Patients { get; set; }
+        public int Clinics { get; set; }
+        public int Therapist { get; set; }
+        public int vaccinations { get; set; }
 
+
+    }
     public class AppointmentViewModel
     {
        

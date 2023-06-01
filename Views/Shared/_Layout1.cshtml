@@ -88,7 +88,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item fs-4" href="@Url.Action("Report", "ManageAccount")"><i class="fa-solid fa-arrow-trend-up"></i> צפייה בדוחות</a>
-                            <a class="dropdown-item fs-4" href="@Url.Action("ReportDownload", "ManageAccount")"><i class="fa-solid fa-chart-user"></i> הפקת דוחות</a>
+                            <a class="dropdown-item fs-4" href="@Url.Action("ReportDownload", "ManageAccount")"><i class="fa-solid fa-chart-user"></i> יצוא דוחות</a>
                             <div class="dropdown-divider"></div>
 
                         </div>
@@ -153,8 +153,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-
-                            <img src="~/Image/Free_Sample_By_Wix.jpg" style="height:45px; width:45px" /> &nbsp;
+                            <img src="~/Image/Free_Sample_By_Wix (1).svg"style="height:45px; width:45px " />
 
                         </li>
 
@@ -162,12 +161,12 @@
                 </div>
             </nav>
             @*Content Area Srart Here*@
-            <main class="content">
-                <div class="container-fluid p-0">
-                    @RenderBody()
-                </div>
-                <br><br><br> <br><br><br>
-            </main>
+        <main class="content">
+            <div class="container-fluid p-0">
+                @RenderBody()
+            </div>
+            
+        </main>
             @*Footer Section Start*@
 
 
